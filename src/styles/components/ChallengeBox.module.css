@@ -105,3 +105,16 @@
 .challengeActive footer button.challengeSucceededButton:hover {
   background: var(--green-dark)
 }
+
+@media (max-width: 992px) {
+  .challengeActive main img {
+    max-width: 15rem;
+    margin: 1rem 0;
+  }
+  .challengeActive main strong {
+    padding: 1rem 0;
+  }
+  .challengeActive main p {
+    margin: 1rem 0;
+  }
+}
