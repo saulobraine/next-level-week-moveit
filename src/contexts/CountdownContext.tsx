@@ -38,14 +38,17 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
     clearTimeout(countDownTimeout);
     setIsActive(false);
     setHasFinished(false);
-    setTime(1 * 60);
+    setTime(25 * 60);
+    document.title = `Início | move.it`;
   }
 
   useEffect(() => {
 
     if (isActive && time > 0) {
       countDownTimeout = setTimeout(() => {
-        setTime(time - 1);
+        const currentTime = time - 1;
+        document.title = `${currentTime} | Início | move.it`;
+        setTime(currentTime);
       }, 1000)
     } else if (isActive && time === 0) {
       setHasFinished(true);
