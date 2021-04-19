@@ -43,12 +43,15 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
   }
 
   useEffect(() => {
+    if (isActive) {
+      const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('');
+      const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
+      document.title = `${minuteLeft}${minuteRight}:${secondLeft}${secondRight} | Início | move.it`;
+    }
 
     if (isActive && time > 0) {
       countDownTimeout = setTimeout(() => {
-        const currentTime = time - 1;
-        document.title = `${currentTime} | Início | move.it`;
-        setTime(currentTime);
+        setTime(time - 1);
       }, 1000)
     } else if (isActive && time === 0) {
       setHasFinished(true);
